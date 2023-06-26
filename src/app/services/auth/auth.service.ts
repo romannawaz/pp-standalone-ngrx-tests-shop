@@ -3,15 +3,21 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { RegisterData, Tokens } from './auth.interface';
+import { LoginData, RegisterData, Tokens } from './auth.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  private _apiUrl = 'http://localhost:3000/api';
+  apiUrl = 'http://localhost:3000/api';
+  apiUrlLogin = this.apiUrl + '/auth/login';
+  apiUrlRegister = this.apiUrl + '/auth/register';
 
   constructor(private http: HttpClient) {}
 
+  login(data: LoginData): Observable<Tokens> {
+    return this.http.post<Tokens>(this.apiUrlLogin, data);
+  }
+
   register(data: RegisterData): Observable<Tokens> {
-    return this.http.post<Tokens>(this._apiUrl + '/auth/register', data);
+    return this.http.post<Tokens>(this.apiUrlRegister, data);
   }
 }
