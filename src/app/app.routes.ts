@@ -9,12 +9,17 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'login',
-    loadComponent: () => LoginComponent,
-  },
-  {
-    path: 'register',
-    loadComponent: () => RegisterComponent,
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        loadComponent: () => LoginComponent,
+      },
+      {
+        path: 'register',
+        loadComponent: () => RegisterComponent,
+      },
+    ],
   },
   {
     path: '**',

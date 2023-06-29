@@ -3,8 +3,10 @@
     <div class="logo" [routerLink]="['']">Logo</div>
     <div class="ui-spacer"></div>
     <div class="header_buttons">
-      <button mat-button [routerLink]="['login']">Login</button>
-      <button mat-flat-button [routerLink]="['register']">Register</button>
+      <button mat-button [routerLink]="['auth', 'login']">Login</button>
+      <button mat-flat-button [routerLink]="['auth', 'register']">
+        Register
+      </button>
     </div>
   </div>
 </header>
