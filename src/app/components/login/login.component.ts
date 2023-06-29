@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { Subject, takeUntil } from 'rxjs';
 
@@ -16,10 +17,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AuthService } from '../../services/auth/auth.service';
+import { authActions } from '../../state/auth/auth.action';
 
 const Material = [MatIconModule, MatInputModule, MatButtonModule];
 
-interface FormLogin {
+export interface FormLogin {
   email: FormControl<string>;
   password: FormControl<string>;
 }
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   showPassword = false;
 
   constructor(
+    private store: Store,
     private fb: NonNullableFormBuilder,
     private authService: AuthService
   ) {}
@@ -68,9 +71,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authService
       .login(this.loginForm.getRawValue())
       .pipe(takeUntil(this._destroyed$))
-      .subscribe(() => {
+      .subscribe((tokens) => {
         this.loginForm.reset();
         this.formGroupDirective.resetForm();
+
+        this.store.dispatch(authActions.loggedSuccess(tokens));
       });
   }
 
