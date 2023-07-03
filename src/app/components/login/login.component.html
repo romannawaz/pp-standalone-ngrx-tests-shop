@@ -41,6 +41,11 @@
     </mat-form-field>
   </div>
   <div>
+    <mat-error *ngIf="loginForm.touched && (authFacade.error$ | async)">
+      {{ (authFacade.error$ | async)?.error.message }}
+    </mat-error>
+  </div>
+  <div>
     <button
       type="submit"
       class="w-100 submit-btn"

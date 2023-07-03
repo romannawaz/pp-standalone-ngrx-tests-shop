@@ -25,8 +25,6 @@ describe('LoginComponent', () => {
   });
 
   it('controls exist', () => {
-    component.ngOnInit();
-
     expect(component.controls).toBeTruthy();
   });
 

@@ -11,4 +11,9 @@ export const selectTokens = createSelector(
   (state: IAuthState) => state.tokens
 );
 
-export const selectIsLogged = createSelector(authSelector, (state) => state.isLogged);
+export const selectIsLogged = createSelector(
+  authSelector,
+  (state) => state.isLogged
+);
+
+export const selectError = createSelector(authSelector, (state) => state.error);
