@@ -3,10 +3,16 @@ import { createReducer, on } from '@ngrx/store';
 import { Tokens } from '@services/auth/auth.interface';
 import { authActions } from './auth.action';
 
+export const AUTH_FEATURE_KEY = 'auth';
+
 export interface IAuthState {
   tokens: Tokens;
   isLogged: boolean;
   error: HttpErrorResponse | null;
+}
+
+export interface AuthPartialState {
+  readonly [AUTH_FEATURE_KEY]: IAuthState;
 }
 
 export const initialAuthState: IAuthState = {
