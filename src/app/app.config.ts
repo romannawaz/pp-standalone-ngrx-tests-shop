@@ -13,8 +13,11 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
-import { authReducer, AUTH_FEATURE_KEY } from './state/auth/auth.reducer';
-import * as authEffects from './state/auth/auth.effects';
+import {
+  authReducer,
+  AUTH_FEATURE_KEY,
+} from './state/auth/reducer/auth.reducer';
+import * as authEffects from './state/auth/effects/auth.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [

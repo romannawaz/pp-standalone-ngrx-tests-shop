@@ -5,11 +5,11 @@ import { Actions, ofType } from '@ngrx/effects';
 import { Observable, map } from 'rxjs';
 
 import { LoginData, Tokens } from '@services/auth/auth.interface';
-import { authActions } from './auth.action';
-import * as AuthSelectors from './auth.selector';
+import { authActions } from '../actions/auth.actions';
+import * as AuthSelectors from '../selectors/auth.selector';
 import { AbstractAuthFacade } from './auth.facade.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthFacade implements AbstractAuthFacade {
   tokens$: Observable<Tokens> = this.store.select(AuthSelectors.selectTokens);
 

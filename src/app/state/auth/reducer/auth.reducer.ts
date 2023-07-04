@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createReducer, on } from '@ngrx/store';
 import { Tokens } from '@services/auth/auth.interface';
-import { authActions } from './auth.action';
+import { authActions } from '../actions/auth.actions';
 
 export const AUTH_FEATURE_KEY = 'auth';
 

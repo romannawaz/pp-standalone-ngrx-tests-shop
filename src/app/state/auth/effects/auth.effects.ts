@@ -5,7 +5,7 @@ import { catchError, exhaustMap, map, of } from 'rxjs';
 
 import { Tokens } from '@services/auth/auth.interface';
 import { AuthService } from '@services/auth/auth.service';
-import { authActions } from './auth.action';
+import { authActions } from '../actions/auth.actions';
 
 export const loginEffect = createEffect(
   (actions$ = inject(Actions), authService = inject(AuthService)) => {

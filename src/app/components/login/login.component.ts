@@ -13,7 +13,7 @@ import { first } from 'rxjs';
 
 import { AuthService } from '@services/auth/auth.service';
 import { LoginData } from '@services/auth/auth.interface';
-import { AuthFacade } from '../../state/auth/auth.facade';
+import { AuthFacade } from '../../state/auth/facade/auth.facade';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
